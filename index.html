@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getComputerChoice() {
+        let x = Math.floor(Math.random() * 3 + 1);
+
+        if (x === 1) {
+          return "rock";
+        } else if (x === 2) {
+          return "paper";
+        } else if (x == 3) {
+          return "scissors";
+        }
+      }
+
+      function getHumanChoice() {
+        let x = prompt(
+          "Please enter one of the following: rock, paper, or scissors"
+        );
+        return x;
+      }
+
+      function playGame() {
+        humanScore = 0;
+        computerScore = 0;
+
+        for (let i = 0; i < 5; i++) {
+          const humanSelection = getHumanChoice();
+          const computerSelection = getComputerChoice();
+
+          function playRound(humanChoice, computerChoice) {
+            let humStr = humanChoice.toLowerCase();
+            if (humStr === computerChoice) {
+              console.log("Tie!");
+            } else if (humStr === "rock" && computerChoice === "paper") {
+              computerScore += 1;
+              console.log("You lose! Paper beats Rock");
+            } else if (humStr === "rock" && computerChoice === "scissors") {
+              humanScore += 1;
+              console.log("You win! Rock beats Scissors");
+            } else if (humStr === "paper" && computerChoice === "scissors") {
+              computerScore += 1;
+              console.log("You lose! Scissors beats Paper");
+            } else if (computerChoice === "rock" && humStr === "paper") {
+              humanScore += 1;
+              console.log("You Win! Paper beats Rock");
+            } else if (computerChoice === "rock" && humStr === "scissors") {
+              computerScore += 1;
+              console.log("You lose! Rock beats Scissors");
+            } else if (computerChoice === "paper" && humStr === "scissors") {
+              humanScore += 1;
+              console.log("You win! Scissors beats Paper");
+            }
+          }
+
+          playRound(humanSelection, computerSelection);
+        }
+
+        if (humanScore > computerScore) {
+          return `You win! Your score: ${humanScore} Computer Score: ${computerScore}`;
+        } else if (humanScore < computerScore) {
+          return `You lose! Your score: ${humanScore} Computer Score: ${computerScore}`;
+        } else if (humanScore === computerScore) {
+          return `Tie! Your score: ${humanScore} Computer Score: ${computerScore}`;
+        }
+      }
+
+      let ans = playGame();
+
+      console.log(ans);
+    </script>
+  </body>
+</html>
