@@ -6,6 +6,7 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="res"></div>
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
@@ -13,6 +14,7 @@
       const rock = document.querySelector("#rock");
       const paper = document.querySelector("#paper");
       const scissors = document.querySelector("#scissors");
+      const res = document.querySelector("#res");
 
       function getComputerChoice() {
         let x = Math.floor(Math.random() * 3 + 1);
@@ -55,25 +57,25 @@
         function playRound(humanChoice, computerChoice) {
           let humStr = humanChoice.toLowerCase();
           if (humStr === computerChoice) {
-            console.log("Tie!");
+            res.textContent = "Tie!";
           } else if (humStr === "rock" && computerChoice === "paper") {
             computerScore += 1;
-            console.log("You lose! Paper beats Rock");
+            res.textContent = "You lose! Paper beats Rock";
           } else if (humStr === "rock" && computerChoice === "scissors") {
             humanScore += 1;
-            console.log("You win! Rock beats Scissors");
+            res.textContent = "You win! Rock beats Scissors";
           } else if (humStr === "paper" && computerChoice === "scissors") {
             computerScore += 1;
-            console.log("You lose! Scissors beats Paper");
+            res.textContent = "You lose! Scissors beats Paper";
           } else if (computerChoice === "rock" && humStr === "paper") {
             humanScore += 1;
-            console.log("You Win! Paper beats Rock");
+            res.textContent = "You Win! Paper beats Rock";
           } else if (computerChoice === "rock" && humStr === "scissors") {
             computerScore += 1;
-            console.log("You lose! Rock beats Scissors");
+            res.textContent = "You lose! Rock beats Scissors";
           } else if (computerChoice === "paper" && humStr === "scissors") {
             humanScore += 1;
-            console.log("You win! Scissors beats Paper");
+            res.textContent = "You win! Scissors beats Paper";
           }
         }
 
