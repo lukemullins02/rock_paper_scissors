@@ -68,7 +68,13 @@
           let humStr = humanChoice.toLowerCase();
 
           if (humStr === computerChoice) {
-            res.textContent = `Tie!`;
+            if (humStr === "paper") {
+              res.textContent = "👨:📄 = 🤖:📄";
+            } else if (humStr === "rock") {
+              res.textContent = "👨:🪨 = 🤖:🪨";
+            } else if (humStr === "scissors") {
+              res.textContent = "👨:✂️ = 🤖:✂️";
+            }
           } else if (humStr === "rock" && computerChoice === "paper") {
             computerScore += 1;
             res.textContent = `👨:🪨 < 🤖:📄`;
