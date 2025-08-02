@@ -6,15 +6,17 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="score"></div>
     <div id="res"></div>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+    <button id="rock">🪨</button>
+    <button id="paper">📄</button>
+    <button id="scissors">✂️</button>
     <script>
       const rock = document.querySelector("#rock");
       const paper = document.querySelector("#paper");
       const scissors = document.querySelector("#scissors");
       const res = document.querySelector("#res");
+      const score = document.querySelector("#score");
 
       function getComputerChoice() {
         let x = Math.floor(Math.random() * 3 + 1);
@@ -56,34 +58,38 @@
 
         function playRound(humanChoice, computerChoice) {
           let humStr = humanChoice.toLowerCase();
+
           if (humStr === computerChoice) {
-            res.textContent = `Tie! Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `Tie!`;
           } else if (humStr === "rock" && computerChoice === "paper") {
             computerScore += 1;
-            res.textContent = `You lose! Paper beats Rock. Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `👨:🪨 < 🤖:📄`;
           } else if (humStr === "rock" && computerChoice === "scissors") {
             humanScore += 1;
-            res.textContent = `You win! Rock beats Scissors. Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `👨:🪨 > 🤖:✂️.`;
           } else if (humStr === "paper" && computerChoice === "scissors") {
             computerScore += 1;
-            res.textContent = `You lose! Scissors beats Paper. Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `👨:📄 < 🤖:✂️`;
           } else if (computerChoice === "rock" && humStr === "paper") {
             humanScore += 1;
-            res.textContent = `You Win! Paper beats Rock. Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `👨:📄 > 🤖:🪨`;
           } else if (computerChoice === "rock" && humStr === "scissors") {
             computerScore += 1;
-            res.textContent = `You lose! Rock beats Scissors. Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `👨:✂️ < 🤖:🪨`;
           } else if (computerChoice === "paper" && humStr === "scissors") {
             humanScore += 1;
-            res.textContent = `You win! Scissors beats Paper. Your score: ${humanScore} Computer Score: ${computerScore}`;
+            res.textContent = `👨:✂️ > 🤖:📄`;
           }
+
+          score.textContent = `👨: ${humanScore} 🤖: ${computerScore}`;
+
           if (humanScore == 5 || computerScore == 5) {
             if (humanScore > computerScore) {
-              res.textContent = `You win! Your score: ${humanScore} Computer Score: ${computerScore}. Click an option to play again.`;
+              score.textContent = `You win! 👨: ${humanScore} 🤖: ${computerScore}. Click an option to play again.`;
               humanScore = 0;
               computerScore = 0;
             } else if (humanScore < computerScore) {
-              res.textContent = `You lose! Your score: ${humanScore} Computer Score: ${computerScore}. Click an option to play again.`;
+              score.textContent = `You lose! 👨: ${humanScore} 🤖: ${computerScore}. Click option to play again.`;
               humanScore = 0;
               computerScore = 0;
             }
