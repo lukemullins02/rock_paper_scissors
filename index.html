@@ -3,20 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock,Paper,Scissors</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="score"></div>
-    <div id="res"></div>
-    <button id="rock">🪨</button>
-    <button id="paper">📄</button>
-    <button id="scissors">✂️</button>
+    <div class="uni">
+      <div id="score"></div>
+      <div id="res"></div>
+      <div class="container">
+        <button id="rock">🪨</button>
+        <button id="paper">📄</button>
+        <button id="scissors">✂️</button>
+      </div>
+    </div>
     <script>
       const rock = document.querySelector("#rock");
       const paper = document.querySelector("#paper");
       const scissors = document.querySelector("#scissors");
       const res = document.querySelector("#res");
       const score = document.querySelector("#score");
+
+      score.textContent = `👨: 0 🤖: 0`;
+      res.textContent = `Choose an option`;
 
       function getComputerChoice() {
         let x = Math.floor(Math.random() * 3 + 1);
@@ -85,11 +93,11 @@
 
           if (humanScore == 5 || computerScore == 5) {
             if (humanScore > computerScore) {
-              score.textContent = `You win! 👨: ${humanScore} 🤖: ${computerScore}. Click an option to play again.`;
+              score.textContent = `You win! 👨: ${humanScore} 🤖: ${computerScore}.`;
               humanScore = 0;
               computerScore = 0;
             } else if (humanScore < computerScore) {
-              score.textContent = `You lose! 👨: ${humanScore} 🤖: ${computerScore}. Click option to play again.`;
+              score.textContent = `You lose! 👨: ${humanScore} 🤖: ${computerScore}.`;
               humanScore = 0;
               computerScore = 0;
             }
